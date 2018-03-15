@@ -210,4 +210,4 @@ When writing jinja2 templates take note of the 'dash' signs, like:
 
 The purpose of those signs in templates is to remove blank lines, either before or after the section when config is generated. This way you will get 'clean' config without blank lines, but you may need to test the template several times, as it does not always work as expected.
 
-[Back to network-automation main page](..)
+[Back to network-automation main page](/../../)

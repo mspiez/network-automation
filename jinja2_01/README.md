@@ -149,4 +149,4 @@ File saved.
 
 That is probably the most basic example, but it should give you a high-level view how you can use jinja2 templates with Python.
 
-[Back to network-automation main page](./..)
+[Back to network-automation main page](./../..)

@@ -1,0 +1,41 @@
+---
+-
+  hosts: localhost
+  gather_facts: False
+  tasks:
+    - name: Generates config for all hosts
+      include_tasks: config_generator.yaml
+      with_inventory_hostnames:
+        - all
+      loop_control:
+        loop_var: outer_item
+
+-  
+  hosts: inventory_test
+  gather_facts: False
+  connection: local
+  tasks:
+  - name: Send config to Target node
+    scp_file_put:
+      host_ip: "{{ ansible_host }}"
+      username: "{{ ansible_user }}"
+      password: "{{ ansible_pass }}"
+      source_file: "/path/to/files/network-automation/Ansible_05/configs/{{ inventory_hostname }}.cfg"
+      dest_file: "cf3:/{{ inventory_hostname }}.cfg"
+
+  - name: Verify if file with config exists on target node after uploading
+    check_file_exists_after_scp_put:
+      host_ip: "{{ ansible_host }}"
+      username: "{{ ansible_user }}"
+      password: "{{ ansible_pass }}"
+      dest_file: "cf3:/{{ inventory_hostname }}.cfg"
+    register: result
+
+  - name: Execute file on target node
+    exec_file:
+      host_ip: "{{ ansible_host }}"
+      username: "{{ ansible_user }}"
+      password: "{{ ansible_pass }}"
+      dest_file: "cf3:/{{ inventory_hostname }}.cfg"
+    when:
+      - result|succeeded

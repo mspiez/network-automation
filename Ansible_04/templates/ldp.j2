@@ -1,0 +1,6 @@
+/configure router ldp no shutdown
+{% for iface in iface_names -%}
+{% if iface != "system" -%}
+/configure router ldp interface-parameters interface "{{ iface }}"
+{% endif -%}
+{% endfor -%}

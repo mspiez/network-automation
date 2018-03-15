@@ -1,0 +1,57 @@
+---
+ports:
+  - '1/1/1'
+  - '1/1/2'
+  - '1/1/3'
+  - '1/1/4'
+
+iface_names:
+  - system
+  - toR1
+  - toR3
+  - toR4
+
+iface_parms:
+  system:
+    address: '10.10.10.2/32'
+  toR1:
+    desc: 'test description2'
+    address: '10.10.12.2/24'
+    port: '1/1/1:10'
+  toR3:
+    desc: 'test description3'
+    address: '10.10.23.2/24'
+    port: '1/1/2:10'
+  toR4:
+    desc: 'test description4'
+    address: '10.10.24.2/24'
+    port: '1/1/3:10'
+
+lsp_names:
+  - toR1
+  - toR3
+  - toR4
+
+lsps:
+  toR1:
+    farend: '10.10.10.1'
+  toR3:
+    farend: '10.10.10.3'
+  toR4:
+    farend: '10.10.10.4'
+
+sdp_ids:
+  - 21
+  - 23
+  - 24
+
+sdps:
+  21:
+    farend: '10.10.10.1'
+    mpls: ldp
+  23:
+    farend: '10.10.10.3'
+    mpls: ldp
+  24:
+    farend: '10.10.10.4'
+    mpls: ldp

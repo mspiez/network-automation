@@ -1,0 +1,5 @@
+/configure router ospf traffic-engineering
+{% for iface in iface_names -%}
+/configure router ospf area 0 interface "{{ iface }}" interface-type point-to-point
+/configure router ospf area 0 interface "{{ iface }}" no shutdown
+{% endfor %}

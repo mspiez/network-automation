@@ -1,0 +1,10 @@
+/configure router mpls no shutdown
+/configure router mpls path igp no shutdown
+{% for iface in iface_names -%}
+/configure router mpls interface "{{ iface }}" no shutdown
+{% endfor -%}
+{% for lsp in lsps -%}
+/configure router mpls lsp "{{ lsp }}" no shutdown
+/configure router mpls lsp "{{ lsp }}" to {{ lsps[lsp].farend }}
+/configure router mpls lsp "{{ lsp }}" primary "igp"
+{% endfor -%}

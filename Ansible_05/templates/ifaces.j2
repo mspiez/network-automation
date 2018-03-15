@@ -1,0 +1,9 @@
+{% for iface in iface_names -%}
+{% if iface == "system" -%}
+/configure router interface "{{ iface }}" address {{ iface_parms[iface].address }}
+{% else -%}
+/configure router interface "{{ iface }}" address {{ iface_parms[iface].address }}
+/configure router interface "{{ iface }}" port {{ iface_parms[iface].port }}
+/configure router interface "{{ iface }}" description "{{ iface_parms[iface].desc }}"
+{% endif -%}
+{% endfor -%}

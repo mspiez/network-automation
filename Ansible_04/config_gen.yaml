@@ -1,0 +1,15 @@
+#config_gen.yaml
+---
+-  
+  hosts: localhost
+  gather_facts: False
+  connection: local
+  tasks:
+    - name: include vars
+      include_vars: 
+        file: R1.yaml
+
+    - name: Generate port configuration
+      template: 
+        src: "/path/to/files/network-automation/Ansible_04/templates/ports.j2"
+        dest: "/path/to/files/network-automation/Ansible_04/configs/ports.cfg"

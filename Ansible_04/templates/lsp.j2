@@ -1,0 +1,5 @@
+{% for lsp in lsps -%}
+/configure router mpls lsp "{{ lsp }}" no shutdown
+/configure router mpls lsp "{{ lsp }}" to {{ lsps[lsp].farend }}
+/configure router mpls lsp "{{ lsp }}" primary "igp"
+{% endfor -%}

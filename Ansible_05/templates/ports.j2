@@ -1,0 +1,6 @@
+{% for port in ports -%}
+/configure port {{ port }} ethernet mode hybrid
+/configure port {{ port }} ethernet encap-type dot1q
+/configure port {{ port }} ethernet mtu 9212
+/configure port {{ port }} no shutdown
+{%- endfor %}

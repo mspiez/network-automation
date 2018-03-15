@@ -1,0 +1,6 @@
+{% for sdp in sdp_ids -%}
+/configure service sdp {{ sdp }} mpls create
+/configure service sdp {{ sdp }} ldp
+/configure service sdp {{ sdp }} farend {{ sdps[sdp].farend }}
+/configure service sdp {{ sdp }} no shutdown
+{% endfor -%}

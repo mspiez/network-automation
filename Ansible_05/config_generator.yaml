@@ -1,0 +1,71 @@
+---
+- name: "Start of config genration for {{ outer_item }}"
+  debug: 
+    msg: "{{ outer_item }}"
+
+- name: include vars
+  include_vars: 
+    file: "{{ outer_item }}.yaml"
+
+- name: Creates directory
+  file:
+    path: "/path/to/files/network-automation/Ansible_05/tmp/{{ outer_item }}"
+    state: directory
+
+# - name: Generate port configuration
+#   template: 
+#     src="/path/to/files/network-automation/Ansible_05/templates/ports.j2"
+#     dest="/path/to/files/network-automation/Ansible_05/tmp/{{ outer_item }}/ports.cfg"
+#   register: r1
+
+# - name: Generate ifaces configuration
+#   template: 
+#     src="/path/to/files/network-automation/Ansible_05/templates/ifaces.j2"
+#     dest="/path/to/files/network-automation/Ansible_05/tmp/{{ outer_item }}/ifaces.cfg"
+#   register: r2
+
+- name: Generate ospf configuration
+  template: 
+    src: "/path/to/files/network-automation/Ansible_05/templates/ospf.j2"
+    dest: "/path/to/files/network-automation/Ansible_05/tmp/{{ outer_item }}/ospf.cfg"
+  register: r3
+
+# - name: Generate ldp configuration
+#   template: 
+#     src="/path/to/files/network-automation/Ansible_05/templates/ldp.j2"
+#     dest="/path/to/files/network-automation/Ansible_05/tmp/{{ outer_item }}/ldp.cfg"
+#   register: r4
+
+# - name: Generate mpls configuration
+#   template: 
+#     src="/path/to/files/network-automation/Ansible_05/templates/mpls.j2"
+#     dest="/path/to/files/network-automation/Ansible_05/tmp/{{ outer_item }}/mpls.cfg"
+#   register: r5
+
+# - name: Generate SDP configuration
+#   template: 
+#     src="/path/to/files/network-automation/Ansible_05/templates/sdp.j2"
+#     dest="/path/to/files/network-automation/Ansible_05/tmp/{{ outer_item }}/sdp.cfg"
+#   register: r6
+
+- name: Generate file
+  template: 
+    src: "/path/to/files/network-automation/Ansible_05/templates/blank_file.j2"
+    dest: "/path/to/files/network-automation/Ansible_05/configs/{{ outer_item }}.cfg"
+  when:
+    # - r1|succeeded
+    # - r2|succeeded
+    - r3|succeeded
+    # - r4|succeeded
+    # - r5|succeeded
+    # - r6|succeeded
+  register: r7
+
+- name: Merge config files
+  assemble: 
+    src: "/path/to/files/network-automation/Ansible_05/tmp/{{ outer_item }}/"
+    dest: "/path/to/files/network-automation/Ansible_05/configs/{{ outer_item }}.cfg"
+  when:
+    - r7|succeeded
+
+

@@ -1,0 +1,20 @@
+---
+iface_names:
+  - toR2
+  - toR3
+  - toR4
+
+
+iface_parms:
+  toR2:
+    desc: 'test description2'
+    address: '10.10.12.1/30'
+    port: '1/1/1'
+  toR3:
+    desc: 'test description3'
+    address: '10.10.13.1/30'
+    port: '1/1/2'
+  toR4:
+    desc: 'test description4'
+    address: '10.10.14.1/30'
+    port: '1/1/3' 

@@ -5,7 +5,7 @@
 
 Until now, we have sent configs to Nokia routers in parallel, but configs were generated in separate playbooks. Let's try to write playbook that based on our inventory file will generate config for proper node and then will send config and execute it on the router.
 
-Within out playbook we will need separate play responsible for generating configs on localhost and separate play to send configs to the nodes. Sending configs is already covered in one of the previous playbooks(exec.yaml), but config generation with ‘template’ module requires some re-design, therefore in this case let's create a new play responsible for config generation. This time, for all routers available in the inventory file.
+Within our playbook we will need separate play responsible for generating configs on localhost and separate play to send configs to the nodes. Sending configs is already covered in one of the previous playbooks(exec.yaml), but config generation with ‘template’ module requires some re-design, therefore in this case let's create a new play responsible for config generation. This time, for all routers available in the inventory file.
 
 We need to loop through every host from inventory and perform common set of tasks. Import vars adequate for proper router (ex: R1.yaml), create config folder for proper router (ex: ../R1/), generate config for proper router (ex: R1.cfg). In our example we have only R1 and R2 in the inventory file, but in real production environments there will be many more. That is why we need to write playbook in a way that we can run it independently from number of our routers.
 

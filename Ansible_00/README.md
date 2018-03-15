@@ -102,4 +102,4 @@ The point here is, that I have just moved file README.md from my localhost to th
 Our goal with Ansible, will be to move config files to the nodes (in parallel) and execute them on the node.
 
 
-[Back to network-automation main page](./..)
+[Back to network-automation main page](/../../)

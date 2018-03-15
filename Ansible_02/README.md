@@ -42,4 +42,4 @@ The inventory_hostname var used in the tasks, allows Ansible not only find the c
 
 Now, we have our last piece that was missing and we can run our playbook.
 
-[Back to network-automation main page](./..)
+[Back to network-automation main page](/../../)

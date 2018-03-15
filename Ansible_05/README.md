@@ -204,4 +204,4 @@ localhost                  : ok=14   changed=6    unreachable=0    failed=0
 
 This was nice! One playbook, 2 plays, many tasks and job done. If you need to introduce new router in the network just create new meta data file, add new router to the inventory and you are ready for deployment.
 
-[Back to network-automation main page](./..)
+[Back to network-automation main page](/../../)

@@ -86,4 +86,4 @@ Description      : desc_R2
 Firstly, note that when running our playbook command, we have changed the default inventory by pointing Ansible towards our custom-made inventory file. Secondly, take a look how tasks were executed - one by one for the whole group of hosts, meaning, each task is executed in parallel.
 Ok, that was nice, but let's try something else, even more interesting.
 
-[Back to network-automation main page](./..)
+[Back to network-automation main page](/../../)

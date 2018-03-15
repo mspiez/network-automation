@@ -103,4 +103,4 @@ We have generated port config only, but you can easily extend playbook with addi
 
 For the basic cases, with Ansible, we don't need to create custom python scripts anymore. All we need to do is prepare routers meta data file and template. Ansible will do the rest for us.
 
-[Back to network-automation main page](./..)
+[Back to network-automation main page](/../../)

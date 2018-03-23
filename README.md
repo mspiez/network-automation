@@ -48,3 +48,6 @@ How to generate Nokia router config based on YAML file, Jinja2 template and Ansi
 Generating config files on localhost and sending it to the routers in single Ansible playbook. 
 
 
+### [Nokia router's card auto-provisioning](./Stackstorm01)
+
+Card auto-provisioning for Nokia SROS based on SYSLOG messages, Napalm-logs and Stackstorm. 

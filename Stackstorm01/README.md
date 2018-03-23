@@ -436,7 +436,7 @@ class MdaRunner(Action):
             return eq_type
 ```
 
-Script does pretty basic function - provisioning of the MDA card. But interesting thing here is that there is a level of validation before pushing any config to the node. Functions like iom_check() or _not_provisioned() are run, just to see if the state of the router is really appropriate to push MDA config. Also, recognition of the card type is done as we don't have this information from Syslog messages. Thanks to those couple of function we are sure that Stackstorm will push config only in certain circumstances and that recognition is done automatically. If everything works as expected, we should get to the point where MDA cards are provisioned by Stackstorm whenever they are inserted into the router and provisioning was not done already.
+Script does pretty basic function - provisioning of the MDA card. But interesting thing here is that there is a level of validation before pushing any config to the node. Functions like iom_check() or _not_provisioned() are run, just to see if the state of the router is really appropriate to push MDA config. Also, recognition of the card type is done as we don't have this information from Syslog messages. Thanks to those couple of functions we are sure that Stackstorm will push config only in certain circumstances and that recognition is done automatically. If everything works as expected, we should get to the point where MDA cards are provisioned by Stackstorm whenever they are inserted into the router and provisioning was not done already.
 
 We need to create our new action and rule by running:
 
@@ -489,7 +489,7 @@ st2 execution list
 ```
 
 Stanley user is default Stackstorm user. We can see that there are only 2 executions of our mda_provisioning action which is expected result.
-Last thing to notice in the output is that action failed for one MDA and for second it was successful. Why is that? Well out mda_provisioning action is not so dump and it performs some validation checks before pushing config. If you check the router MDA config before execution you would see the output:
+Last thing to notice in the output is that action failed for one MDA and for second it was successful. Why is that? Well our mda_provisioning action is not so dump and it performs some validation checks before pushing config. If you checked the router MDA config before execution you would see the output:
 
 ```
 A:R1# show mda 
@@ -508,7 +508,7 @@ Slot  Mda   Provisioned Type                            Admin     Operational
 
 Clearly MDA 1/1 was operational and provisioned already. It was only spotted by our system because I had to reboot my VM to make my router send syslog event related to card insertion. This is actually good, because you can see that config is pushed not for IOM, not for MDA that is already provisioned, but only in case the config is really needed - MDA 1/2 in this example.
 
-By checking the successful execution id you can verify which MDA was previsioned:
+By checking the successful execution id you can verify which MDA was provisioned:
 
 ```
 ~$ st2 execution get 5ab50c469eb0c904913e74b8
